@@ -2,10 +2,11 @@ let copper_per_silver = 12
 let silver_per_gold = 20
 
 let divmod (x, y) =
-    if x >= 0 then
-        (x / y, x % y)
+    let (q, r) = (x / y, x % y)
+    if r >= 0 then
+        (q, r)
     else
-        (x / y - 1, x % y + y)
+        (q - 1, r + y)
 
 let norm_money x =
     let (g, s, c) = x
