@@ -13,6 +13,6 @@ let rec dnto = function
 // 34.3
 let evenn n =
     let rec fn = function
-      | (-1, acc) -> acc
-      | (n, acc) -> fn(n - 1, n * 2 :: acc) 
+      | (0, acc) -> acc
+      | (n, acc) -> fn(n - 1, (n - 1) * 2 :: acc) 
     fn(n, [])
