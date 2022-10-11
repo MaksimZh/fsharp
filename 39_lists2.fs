@@ -11,10 +11,10 @@ let rec del_even = function
   | head :: tail -> head :: (del_even tail)
 
 // 39.3
-let rec multiplicity = function
-  | (x, []) -> 0
-  | (x, head :: tail) when (head = x) -> 1 + multiplicity(x, tail)
-  | (x, _ :: tail) -> multiplicity(x, tail)
+let rec multiplicity x xs = match xs with
+  | [] -> 0
+  | head :: tail when (head = x) -> 1 + (multiplicity x tail)
+  | _ :: tail -> multiplicity x tail
 
 // 39.4
 let rec split = function
