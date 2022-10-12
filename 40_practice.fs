@@ -80,5 +80,5 @@ let sort xs =
 let revrev xs =
     let rec iter = function
         | ([], a) -> a
-        | (head :: tail, a) -> iter(tail, [List.rev head] :: a)
+        | (head :: tail, a) -> iter(tail, (List.rev head) :: a)
     iter(xs, [])
