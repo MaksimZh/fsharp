@@ -71,14 +71,14 @@ let delete (n, xs) =
 
 // 40.3.3
 let sort xs =
-    let rec split = function
-        | [] -> []
-        | head :: tail -> [head] :: split(tail)
-    let rec merge = function
-        | [] | [_] as it -> it
-        | first :: second :: tail -> plus(first, second) :: merge(tail)
-    let rec merge_all = function
-        | [] -> []
-        | head :: [] -> head
-        | superlist -> merge_all(merge superlist)
-    merge_all(split xs)
+    let rec iter (s, a) = match (smallest s) with
+        | None -> a
+        | Some(v) -> iter(delete(v, s), a @ [v])
+    iter(xs, [])
+
+// 40.4
+let revrev xs =
+    let rec iter = function
+        | ([], a) -> a
+        | (head :: tail, a) -> iter(tail, [List.rev head] :: a)
+    iter(xs, [])
